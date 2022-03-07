@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.UsernameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.LastNameTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SaveButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // FirstNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(348, 26);
-            this.textBox1.TabIndex = 1;
+            this.FirstNameTextBox.Location = new System.Drawing.Point(17, 51);
+            this.FirstNameTextBox.Name = "FirstNameTextBox";
+            this.FirstNameTextBox.Size = new System.Drawing.Size(348, 26);
+            this.FirstNameTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -71,12 +71,12 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Usuário:";
             // 
-            // textBox2
+            // UsernameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(17, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(348, 26);
-            this.textBox2.TabIndex = 1;
+            this.UsernameTextBox.Location = new System.Drawing.Point(17, 50);
+            this.UsernameTextBox.Name = "UsernameTextBox";
+            this.UsernameTextBox.Size = new System.Drawing.Size(348, 26);
+            this.UsernameTextBox.TabIndex = 1;
             // 
             // label3
             // 
@@ -87,20 +87,20 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Senha:";
             // 
-            // textBox3
+            // PasswordTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(17, 106);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(348, 26);
-            this.textBox3.TabIndex = 3;
+            this.PasswordTextBox.Location = new System.Drawing.Point(17, 106);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(348, 26);
+            this.PasswordTextBox.TabIndex = 3;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.EmailTextBox);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.LastNameTextBox);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.FirstNameTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -109,41 +109,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Pessoais";
             // 
-            // groupBox2
+            // EmailTextBox
             // 
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 235);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(385, 150);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dados de Acesso";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(17, 113);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(348, 26);
-            this.textBox4.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 86);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 18);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Sobrenome:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(17, 175);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(348, 26);
-            this.textBox5.TabIndex = 5;
+            this.EmailTextBox.Location = new System.Drawing.Point(17, 175);
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(348, 26);
+            this.EmailTextBox.TabIndex = 5;
             // 
             // label5
             // 
@@ -154,34 +125,65 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "E-mail:";
             // 
-            // button1
+            // LastNameTextBox
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(274, 391);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 35);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Salvar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.LastNameTextBox.Location = new System.Drawing.Point(17, 113);
+            this.LastNameTextBox.Name = "LastNameTextBox";
+            this.LastNameTextBox.Size = new System.Drawing.Size(348, 26);
+            this.LastNameTextBox.TabIndex = 3;
             // 
-            // button2
+            // label4
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(145, 391);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 35);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 18);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Sobrenome:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.UsernameTextBox);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.PasswordTextBox);
+            this.groupBox2.Location = new System.Drawing.Point(12, 235);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(385, 150);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Dados de Acesso";
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.BackColor = System.Drawing.Color.LightGreen;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Location = new System.Drawing.Point(274, 391);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(123, 35);
+            this.SaveButton.TabIndex = 2;
+            this.SaveButton.Text = "Salvar";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelButton.Location = new System.Drawing.Point(145, 391);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(123, 35);
+            this.CancelButton.TabIndex = 3;
+            this.CancelButton.Text = "Cancelar";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // RegisterUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 439);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -191,6 +193,7 @@
             this.Name = "RegisterUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar usuário";
+            this.Load += new System.EventHandler(this.RegisterUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -201,19 +204,19 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox FirstNameTextBox;
         private Label label1;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox UsernameTextBox;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox PasswordTextBox;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private TextBox textBox5;
+        private TextBox EmailTextBox;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox LastNameTextBox;
         private Label label4;
-        private Button button1;
-        private Button button2;
+        private Button SaveButton;
+        private Button CancelButton;
     }
 }

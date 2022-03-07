@@ -11,8 +11,10 @@
 
         public void Create(T entity)
         {
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity));
+
             context.Add(entity);
-            context.SaveChanges();
         }
 
         public T Get(int id)
@@ -29,5 +31,7 @@
         {
             throw new NotImplementedException();
         }
+
+        public void SaveChanges() => context.SaveChanges();
     }
 }
