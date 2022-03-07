@@ -26,5 +26,11 @@ namespace MoreiraBank.Manager.Business
 
             return user;
         }
+
+        public List<UserModel> GetUsers()
+        {
+            var users = userRepository.GetAll();
+            return users.Select(user => (UserModel)user).ToList();
+        }
     }
 }

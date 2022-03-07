@@ -1,4 +1,6 @@
 ﻿using MoreiraBank.Manager.Data;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MoreiraBank.Manager.Models
 {
@@ -62,6 +64,20 @@ namespace MoreiraBank.Manager.Models
             return new UserModel(0, name, GetPasswordEncrypted(password));
         }
 
-        public static string GetPasswordEncrypted(string password) => string.Empty;
+        public static string GetPasswordEncrypted(string password)
+        {
+            var message = Encoding.UTF8.GetBytes(password);
+            using (var alg = SHA512.Create())
+            {
+                string hex = "";
+
+                var hashValue = alg.ComputeHash(message);
+                foreach (byte x in hashValue)
+                {
+                    hex += String.Format("{0:x2}", x);
+                }
+                return hex;
+            }
+        }
     }
 }

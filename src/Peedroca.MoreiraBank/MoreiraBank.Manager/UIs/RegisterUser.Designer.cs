@@ -192,7 +192,7 @@
             this.MaximizeBox = false;
             this.Name = "RegisterUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastrar usuário";
+            this.Text = "Cadastrar Usuário";
             this.Load += new System.EventHandler(this.RegisterUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

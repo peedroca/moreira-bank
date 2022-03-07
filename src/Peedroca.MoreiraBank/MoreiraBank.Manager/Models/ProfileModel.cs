@@ -24,8 +24,8 @@ namespace MoreiraBank.Manager.Models
             AddNotifications(new Contract<Notification>()
                 .Requires()
                 .IsNotEmpty(FirstName, "Profile.FirstName")
-                .IsNotEmpty(LastName, "Profile.FirstName")
-                .IsNotEmpty(Email, "Profile.FirstName")
+                .IsNotEmpty(LastName, "Profile.LastName")
+                .IsNotEmpty(Email, "Profile.Email")
             );
         }
 

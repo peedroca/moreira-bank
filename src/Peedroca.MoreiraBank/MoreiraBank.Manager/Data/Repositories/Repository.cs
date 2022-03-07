@@ -1,15 +1,15 @@
 ﻿namespace MoreiraBank.Manager.Data.Repositories
 {
-    internal class Repository<T> : IQuery<T>, ICommand<T>
+    internal class Repository<T> : IQuery<T>, ICommand<T> where T : class
     {
-        private readonly _68_praontemContext context;
+        protected readonly _68_praontemContext context;
 
         public Repository()
         {
             context = new _68_praontemContext();
         }
 
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             if (entity == null)
                 throw new ArgumentNullException(nameof(entity));
@@ -17,17 +17,14 @@
             context.Add(entity);
         }
 
-        public T Get(int id)
+        public virtual T Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual IEnumerable<T> GetAll() => context.Set<T>().ToList();
 
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             throw new NotImplementedException();
         }

@@ -50,6 +50,8 @@ namespace MoreiraBank.Manager.UIs
                     MessageBox.Show($"Usuário número #{modelResponse.IdUser} criado.", "Usuário cadastrado com sucesso!");
                 }
             }
+
+            ClearFields();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
