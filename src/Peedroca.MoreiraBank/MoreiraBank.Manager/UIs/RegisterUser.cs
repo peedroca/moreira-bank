@@ -1,11 +1,14 @@
 ﻿using MoreiraBank.Manager.Business;
+using MoreiraBank.Manager.Facades;
 using MoreiraBank.Manager.Models;
+using MoreiraBank.Manager.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,8 +17,6 @@ namespace MoreiraBank.Manager.UIs
 {
     public partial class RegisterUser : Form
     {
-        private UserBusiness? business;
-
         public RegisterUser()
         {
             InitializeComponent();
@@ -36,32 +37,60 @@ namespace MoreiraBank.Manager.UIs
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (business != null)
+            errorProvider1.Clear();
+
+            var facade = new UserFacade();
+            facade.Create(UsernameTextBox.Text, PasswordTextBox.Text);
+            facade.AddProfile(FirstNameTextBox.Text, LastNameTextBox.Text, EmailTextBox.Text);
+
+            var modelResponse = facade.Save();
+
+            if (modelResponse.Success)
             {
-                var user = UserModel.New(UsernameTextBox.Text, PasswordTextBox.Text);
-                var profile = ProfileModel.New(FirstNameTextBox.Text, LastNameTextBox.Text, EmailTextBox.Text);
-                
-                user.AddProfile(profile);
+                MessageBox.Show($"Usuário número #{modelResponse.Result?.IdUser} criado.", "Usuário cadastrado com sucesso!");
+            }
+            else
+            {
+                var fields = GetType().GetFields(BindingFlags.Instance | BindingFlags.NonPublic);
 
-                var modelResponse = business.Create(user);
-
-                if (modelResponse != null)
+                foreach (var error in modelResponse.Errors)
                 {
-                    MessageBox.Show($"Usuário número #{modelResponse.IdUser} criado.", "Usuário cadastrado com sucesso!");
+                    var control = FindTag(Controls, error.Key);
+
+                    if (control != null)
+                        errorProvider1.SetError(control, error.Message);
                 }
             }
-
-            ClearFields();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            ClearFields();
+            Close();
         }
 
         private void RegisterUser_Load(object sender, EventArgs e)
         {
-            business = new UserBusiness();
+        }
+
+        private Control? FindTag(Control.ControlCollection controls, string tag)
+        {
+            Control? control = null;
+
+            foreach (Control c in controls)
+            {
+                if (c.Tag != null && c.Tag?.ToString() == tag)
+                    return c; 
+
+                if (c.HasChildren)
+                {
+                    control = FindTag(c.Controls, tag);
+
+                    if (control != null)
+                        return control;
+                }
+            }
+
+            return control;
         }
     }
 }

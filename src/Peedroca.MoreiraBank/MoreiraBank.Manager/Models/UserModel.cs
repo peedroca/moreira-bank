@@ -1,83 +1,50 @@
 ﻿using MoreiraBank.Manager.Data;
-using System.Security.Cryptography;
-using System.Text;
+using MoreiraBank.Manager.ValueObjects;
 
 namespace MoreiraBank.Manager.Models
 {
-    internal class UserModel
+    internal class UserModel : ModelBase
     {
-        private List<ProfileModel> _profiles;
+        private readonly List<ProfileModel> _profiles;
 
-        public UserModel()
-        {
-            IdUser = 0;
-            Name = string.Empty;
-            Password = string.Empty;
-
-            _profiles =  new List<ProfileModel>();
-        }
-
-        public UserModel(int idUser, string name, string password)
+        public UserModel(int idUser, Credential credential)
         {
             IdUser = idUser;
-            Name = name;
-            Password = password;
+            Credential = credential;
 
             _profiles = new List<ProfileModel>();
+
+            AddNotifications(credential);
         }
 
         public int IdUser { get; private set; }
-        public string Name { get; private set; }
-        public string Password { get; private set; }
+        public Credential? Credential { get; private set; }
 
         public IReadOnlyCollection<ProfileModel> Profiles { get { return _profiles.ToArray(); } }
 
-        public void AddProfile(params ProfileModel[] profile) => _profiles.AddRange(profile);
+        public void AddProfile(params ProfileModel[] profile)
+        {
+            AddNotifications(profile);
+            _profiles.AddRange(profile);
+        }
 
         public static implicit operator User(UserModel model)
         {
             return new User()
             {
                 Iduser = model.IdUser,
-                Name = model.Name,
-                Password = model.Password,
+                Name = model.Credential?.Username ?? string.Empty,
+                Password = model.Credential?.HashPassword ?? string.Empty,
                 Profiles = model.Profiles.Select(p => (Profile)p).ToList()
             };
         }
 
         public static implicit operator UserModel(User user)
         {
-            var model = new UserModel()
-            {
-                IdUser = user.Iduser,
-                Name = user.Name,
-                Password = user.Password
-            };
-
+            var model = new UserModel(user.Iduser, new Credential(user.Name));
             model.AddProfile(user.Profiles.Select(p => (ProfileModel)p).ToArray());
 
             return model;
-        }
-
-        public static UserModel New(string name, string password)
-        {
-            return new UserModel(0, name, GetPasswordEncrypted(password));
-        }
-
-        public static string GetPasswordEncrypted(string password)
-        {
-            var message = Encoding.UTF8.GetBytes(password);
-            using (var alg = SHA512.Create())
-            {
-                string hex = "";
-
-                var hashValue = alg.ComputeHash(message);
-                foreach (byte x in hashValue)
-                {
-                    hex += String.Format("{0:x2}", x);
-                }
-                return hex;
-            }
         }
     }
 }

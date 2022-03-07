@@ -10,5 +10,13 @@ namespace MoreiraBank.Manager.Data.Repositories
                 .Users
                 .Include(u => u.Profiles);
         }
+
+        public User? Login(string username, string password)
+        {
+            return context.Users
+                .AsNoTracking()
+                .Where(w => w.Name == username && w.Password == password)
+                .SingleOrDefault();
+        }
     }
 }

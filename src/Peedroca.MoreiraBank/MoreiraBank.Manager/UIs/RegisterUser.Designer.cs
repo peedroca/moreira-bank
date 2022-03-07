@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,8 +43,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // FirstNameTextBox
@@ -52,6 +55,7 @@
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(348, 26);
             this.FirstNameTextBox.TabIndex = 1;
+            this.FirstNameTextBox.Tag = "FirstName";
             // 
             // label1
             // 
@@ -77,6 +81,7 @@
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(348, 26);
             this.UsernameTextBox.TabIndex = 1;
+            this.UsernameTextBox.Tag = "Username";
             // 
             // label3
             // 
@@ -91,8 +96,11 @@
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(17, 106);
             this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(348, 26);
             this.PasswordTextBox.TabIndex = 3;
+            this.PasswordTextBox.Tag = "Password";
+            this.PasswordTextBox.UseSystemPasswordChar = true;
             // 
             // groupBox1
             // 
@@ -115,6 +123,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(348, 26);
             this.EmailTextBox.TabIndex = 5;
+            this.EmailTextBox.Tag = "Email";
             // 
             // label5
             // 
@@ -131,6 +140,7 @@
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(348, 26);
             this.LastNameTextBox.TabIndex = 3;
+            this.LastNameTextBox.Tag = "LastName";
             // 
             // label4
             // 
@@ -168,6 +178,7 @@
             // 
             // CancelButton
             // 
+            this.CancelButton.CausesValidation = false;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Location = new System.Drawing.Point(145, 391);
             this.CancelButton.Name = "CancelButton";
@@ -176,6 +187,11 @@
             this.CancelButton.Text = "Cancelar";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
             // RegisterUser
             // 
@@ -198,6 +214,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,5 +235,6 @@
         private Label label4;
         private Button SaveButton;
         private Button CancelButton;
+        private ErrorProvider errorProvider1;
     }
 }

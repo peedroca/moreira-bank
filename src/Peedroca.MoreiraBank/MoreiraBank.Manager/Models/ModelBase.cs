@@ -2,7 +2,7 @@
 
 namespace MoreiraBank.Manager.Models
 {
-    internal abstract class Model : Notifiable<Notification>
+    internal abstract class ModelBase : Notifiable<Notification>
     {
     }
 }

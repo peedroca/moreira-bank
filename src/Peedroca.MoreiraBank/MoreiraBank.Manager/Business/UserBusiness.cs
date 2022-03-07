@@ -15,8 +15,11 @@ namespace MoreiraBank.Manager.Business
             profileRepository = new ProfileRepository();
         }
 
-        public UserModel Create(UserModel model)
+        public Response<UserModel> Create(UserModel model)
         {
+            if (!model.IsValid)
+                return new Response<UserModel>(model.Notifications);
+
             User user = model;
             
             userRepository.Create(user);
@@ -24,7 +27,7 @@ namespace MoreiraBank.Manager.Business
 
             userRepository.SaveChanges();
 
-            return user;
+            return new Response<UserModel>(user);
         }
 
         public List<UserModel> GetUsers()
