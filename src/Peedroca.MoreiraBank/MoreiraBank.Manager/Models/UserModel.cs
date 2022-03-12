@@ -1,4 +1,6 @@
-﻿using MoreiraBank.Manager.Data;
+﻿using Flunt.Notifications;
+using Flunt.Validations;
+using MoreiraBank.Manager.Data;
 using MoreiraBank.Manager.ValueObjects;
 
 namespace MoreiraBank.Manager.Models

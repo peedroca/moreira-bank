@@ -35,7 +35,16 @@ namespace MoreiraBank.Manager.UIs
                 return;
 
             UsersDataGridView.AutoGenerateColumns = false;
-            UsersDataGridView.DataSource = users.SelectMany(u => u.Profiles).ToList();
+            UsersDataGridView.DataSource = users
+                .SelectMany(u => u.Profiles)?
+                .Select(p => new 
+                    { 
+                        p.Name?.FirstName, 
+                        p.Name?.LastName,
+                        Email = p.Email?.Content
+                    }
+                )?
+                .ToList();
         }
 
         #endregion Private Methods
