@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SpendingsDataGridView = new System.Windows.Forms.DataGridView();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.NewButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.spendingLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SpendingsDataGridView)).BeginInit();
@@ -58,11 +58,11 @@
             this.SpendingsDataGridView.Name = "SpendingsDataGridView";
             this.SpendingsDataGridView.ReadOnly = true;
             this.SpendingsDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.PowderBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.SpendingsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PowderBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.SpendingsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.SpendingsDataGridView.RowTemplate.Height = 35;
             this.SpendingsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SpendingsDataGridView.Size = new System.Drawing.Size(1444, 607);
@@ -86,17 +86,18 @@
             this.Amount.ReadOnly = true;
             this.Amount.Width = 350;
             // 
-            // button2
+            // NewButton
             // 
-            this.button2.BackColor = System.Drawing.Color.SkyBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(1307, 631);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 50);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Novo Gasto";
-            this.button2.UseVisualStyleBackColor = false;
+            this.NewButton.BackColor = System.Drawing.Color.SkyBlue;
+            this.NewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NewButton.Location = new System.Drawing.Point(1307, 631);
+            this.NewButton.Name = "NewButton";
+            this.NewButton.Size = new System.Drawing.Size(150, 50);
+            this.NewButton.TabIndex = 14;
+            this.NewButton.Text = "Novo Gasto";
+            this.NewButton.UseVisualStyleBackColor = false;
+            this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
             // 
             // button1
             // 
@@ -129,7 +130,7 @@
             this.ClientSize = new System.Drawing.Size(1469, 692);
             this.Controls.Add(this.spendingLabel);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.NewButton);
             this.Controls.Add(this.SpendingsDataGridView);
             this.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -149,7 +150,7 @@
         private DataGridView SpendingsDataGridView;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn Amount;
-        private Button button2;
+        private Button NewButton;
         private Button button1;
         private Label spendingLabel;
     }

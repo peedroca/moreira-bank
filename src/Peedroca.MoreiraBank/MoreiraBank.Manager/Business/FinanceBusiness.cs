@@ -19,6 +19,19 @@ namespace MoreiraBank.Manager.Business
             _investimentRepository = new InvestimentRepository();
         }
 
+        public Response<SpendingModel> Create(SpendingModel model)
+        {
+            if (!model.IsValid)
+                return new Response<SpendingModel>(model.Notifications);
+
+            Spending spending = model;
+
+            _spendingRepository.Create(spending);
+            _spendingRepository.SaveChanges();
+
+            return new Response<SpendingModel>(spending);
+        }
+
         public IEnumerable<SpendingModel> GetSpendings(long profileId)
         {
             return _spendingRepository.GetAll(profileId).Select(s => (SpendingModel)s);

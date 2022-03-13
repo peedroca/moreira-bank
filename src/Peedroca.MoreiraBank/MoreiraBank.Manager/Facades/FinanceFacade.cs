@@ -18,6 +18,12 @@ namespace MoreiraBank.Manager.Facades
             this.profileId = profileId;
         }
 
+        public Response<SpendingModel> CreateSpending(string description, decimal amount)
+        { 
+            var business = new FinanceBusiness();
+            return business.Create(new SpendingModel(0, profileId, description, amount));
+        }
+
         public List<SpendingModel>? GetSpending()
         {
             var business = new FinanceBusiness();

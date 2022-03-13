@@ -28,24 +28,32 @@ namespace MoreiraBank.Manager.Models
 
         public void AddSpending(params SpendingModel[] spendings)
         {
+            spendingModels.Clear();
+
             AddNotifications(spendings);
             spendingModels.AddRange(spendings);
         }
 
         public void AddEarnings(params EarningModel[] earnings)
         {
+            earningModels.Clear();
+
             AddNotifications(earnings);
             earningModels.AddRange(earnings);
         }
 
         public void AddEstimatedInvestiment(params EstimatedInvestmentModel[] estimatedInvestments)
         {
+            estimatedInvestmentModels.Clear();
+
             AddNotifications(estimatedInvestments);
             estimatedInvestmentModels.AddRange(estimatedInvestments);
         }
 
         public void AddInvestiments(params InvestimentModel[] investiments)
         {
+            investimentModels.Clear();
+
             AddNotifications(investiments);
             investimentModels.AddRange(investiments);
         }

@@ -1,8 +1,5 @@
-﻿using MoreiraBank.Manager.Business;
-using MoreiraBank.Manager.Facades;
+﻿using MoreiraBank.Manager.Facades;
 using MoreiraBank.Manager.Helpers;
-using MoreiraBank.Manager.Models;
-using MoreiraBank.Manager.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,39 +13,38 @@ using System.Windows.Forms;
 
 namespace MoreiraBank.Manager.UIs
 {
-    public partial class RegisterUser : Form
+    public partial class RegisterSpending : Form
     {
-        public RegisterUser()
+        private long profileId;
+
+        public RegisterSpending()
         {
             InitializeComponent();
         }
 
-        #region Private Methods
+        #region Public Methods
 
-        private void ClearFields()
+        internal RegisterSpending WithProfile(long profileId)
         {
-            FirstNameTextBox.Text = string.Empty;
-            LastNameTextBox.Text = string.Empty;
-            EmailTextBox.Text = string.Empty;
-            UsernameTextBox.Text = string.Empty;
-            PasswordTextBox.Text = string.Empty;
+            this.profileId = profileId;
+            return this;
         }
 
-        #endregion Private Methods
+        #endregion Public Methods
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
 
-            var facade = new UserFacade();
-            facade.Create(UsernameTextBox.Text, PasswordTextBox.Text);
-            facade.AddProfile(FirstNameTextBox.Text, LastNameTextBox.Text, EmailTextBox.Text);
+            decimal.TryParse(AmountTextBox.Text, out var amount);
 
-            var modelResponse = facade.Save();
+            var facade = new FinanceFacade(profileId);
+            var modelResponse = facade.CreateSpending(DescriptionTextBox.Text, amount);
 
             if (modelResponse.Success)
             {
-                MessageBox.Show($"Usuário número #{modelResponse.Result?.IdUser} criado.", "Usuário cadastrado com sucesso!");
+                MessageBox.Show($"Gasto #{modelResponse.Result?.SpendingId}  criado.", "Despeza cadastrado com sucesso!");
+                Close();
             }
             else
             {
@@ -67,10 +63,6 @@ namespace MoreiraBank.Manager.UIs
         private void CancelButton_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void RegisterUser_Load(object sender, EventArgs e)
-        {
         }
     }
 }

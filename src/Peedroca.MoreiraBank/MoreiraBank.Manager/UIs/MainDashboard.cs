@@ -75,7 +75,10 @@ namespace MoreiraBank.Manager.UIs
             new SpendingDashboard()
                 .WithData(spendings)
                 .WithFooter(string.Format("Total: {0}", spendingLabel.Text))
-                .Show();
+                .WithProfileId(1)
+                .ShowDialog();
+
+            LoadFinance();
         }
 
         private void earningLabel_Click(object sender, EventArgs e)
