@@ -20,14 +20,14 @@ namespace MoreiraBank.Manager.Facades
 
         public Response<SpendingModel> CreateSpending(string description, decimal amount)
         { 
-            var business = new FinanceBusiness();
+            var business = new SpendingBusiness();
             return business.Create(new SpendingModel(0, profileId, description, amount));
         }
 
         public List<SpendingModel>? GetSpending()
         {
-            var business = new FinanceBusiness();
-            var spendings = business.GetSpendings(profileId)?.ToList();
+            var business = new SpendingBusiness();
+            var spendings = business.List(profileId)?.ToList();
 
             if (financeModel == null)
                 financeModel = new FinanceModel();
@@ -43,8 +43,8 @@ namespace MoreiraBank.Manager.Facades
 
         public List<EarningModel>? GetEarning()
         {
-            var business = new FinanceBusiness();
-            var earnings = business.GetEarnings(profileId)?.ToList();
+            var business = new EarningBusiness();
+            var earnings = business.List(profileId)?.ToList();
 
             if (financeModel == null)
                 financeModel = new FinanceModel();
@@ -60,7 +60,7 @@ namespace MoreiraBank.Manager.Facades
 
         public List<EstimatedInvestmentModel>? GetEstimatedInvestments()
         {
-            var business = new FinanceBusiness();
+            var business = new EstimatedInvestmentBusiness();
             var estimatedInvestments = business.GetEstimatedInvestments(profileId)?.ToList();
 
             if (financeModel == null)
@@ -77,7 +77,7 @@ namespace MoreiraBank.Manager.Facades
 
         public List<InvestimentModel>? GetInvestiments()
         {
-            var business = new FinanceBusiness();
+            var business = new InvestimentBusiness();
             var investiments = business.GetInvestiments(profileId)?.ToList();
 
             if (financeModel == null)

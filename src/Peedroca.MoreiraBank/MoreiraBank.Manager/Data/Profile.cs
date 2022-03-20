@@ -11,6 +11,7 @@ namespace MoreiraBank.Manager.Data
             EstimatedInvestments = new HashSet<EstimatedInvestment>();
             Investiments = new HashSet<Investiment>();
             Spendings = new HashSet<Spending>();
+            SpendingsDailies = new HashSet<SpendingsDaily>();
         }
 
         public int Idprofile { get; set; }
@@ -24,5 +25,6 @@ namespace MoreiraBank.Manager.Data
         public virtual ICollection<EstimatedInvestment> EstimatedInvestments { get; set; }
         public virtual ICollection<Investiment> Investiments { get; set; }
         public virtual ICollection<Spending> Spendings { get; set; }
+        public virtual ICollection<SpendingsDaily> SpendingsDailies { get; set; }
     }
 }

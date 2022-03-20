@@ -1,14 +1,5 @@
-﻿using MoreiraBank.Manager.Business;
-using MoreiraBank.Manager.Facades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MoreiraBank.Manager.Facades;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace MoreiraBank.Manager.UIs
 {

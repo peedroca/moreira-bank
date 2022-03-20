@@ -23,6 +23,8 @@ namespace MoreiraBank.Manager.Data
         public virtual DbSet<Investiment> Investiments { get; set; } = null!;
         public virtual DbSet<Profile> Profiles { get; set; } = null!;
         public virtual DbSet<Spending> Spendings { get; set; } = null!;
+        public virtual DbSet<SpendingCategory> SpendingCategories { get; set; } = null!;
+        public virtual DbSet<SpendingsDaily> SpendingsDailies { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -172,6 +174,50 @@ namespace MoreiraBank.Manager.Data
                     .HasForeignKey(d => d.ProfileId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Spendings_Profiles");
+            });
+
+            modelBuilder.Entity<SpendingCategory>(entity =>
+            {
+                entity.HasKey(e => e.IdspendingCategory)
+                    .HasName("PK_SpendingCategory");
+
+                entity.Property(e => e.IdspendingCategory).HasColumnName("IDSpendingCategory");
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<SpendingsDaily>(entity =>
+            {
+                entity.HasKey(e => e.IdspendingDaily)
+                    .HasName("PK_SpendingDaily");
+
+                entity.ToTable("SpendingsDaily");
+
+                entity.Property(e => e.IdspendingDaily).HasColumnName("IDSpendingDaily");
+
+                entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ProfileId).HasColumnName("ProfileID");
+
+                entity.Property(e => e.SpendingCategoryId).HasColumnName("SpendingCategoryID");
+
+                entity.HasOne(d => d.Profile)
+                    .WithMany(p => p.SpendingsDailies)
+                    .HasForeignKey(d => d.ProfileId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SpendingsDaily_Profiles");
+
+                entity.HasOne(d => d.SpendingCategory)
+                    .WithMany(p => p.SpendingsDailies)
+                    .HasForeignKey(d => d.SpendingCategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_SpendingsDaily_SpendingCategory");
             });
 
             modelBuilder.Entity<User>(entity =>
